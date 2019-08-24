@@ -24,3 +24,19 @@ file '/var/www/html/index.html' do
   owner 'www-data'
   group 'www-data'
 end
+
+template '/var/www/html/mycompany.html' do
+  source 'mycompany.html.erb'
+  mode '0755'
+  owner 'www-data'
+  group 'www-data'
+  variables ({
+   :companyname => "meine fabrik",
+   :productlist => [ "produkt 1", "ein schoenes teil", "musste koofe" ],
+   :premium => false
+  })
+end
+
+cookbook_file '/var/www/html/webpage.html' do
+  source 'webpage.html'
+end
