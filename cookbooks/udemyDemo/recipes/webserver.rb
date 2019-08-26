@@ -1,3 +1,6 @@
+node.default["udemyDemo"]["companyName"] = "meine bude"
+node.default["udemyDemo"]["productlist"] = [ "product 1", "schön", "besser", "musste koofen"]
+
 package "webserver" do
   action :install
   case node[:platform_family]
@@ -31,8 +34,8 @@ template '/var/www/html/mycompany.html' do
   owner 'www-data'
   group 'www-data'
   variables ({
-   :companyname => "meine fabrik",
-   :productlist => [ "produkt 1", "ein schoenes teil", "musste koofe" ],
+   :companyname => node["udemyDemo"]["companyName"],
+   :productlist => node["udemyDemo"]["productlist"],
    :premium => false
   })
 end
